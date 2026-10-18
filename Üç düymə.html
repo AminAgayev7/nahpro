@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="az"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Üç düymə</title>
+<style>
+:root{--bg:#f2f0ed;--ink:#1d1b1a;--b1:#ff5a3c;--b2:#2f6bff;--b3:#12b886;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16151a;--ink:#f1eee9}}
+:root[data-theme="dark"]{--bg:#16151a;--ink:#f1eee9}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS",system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding:1.5rem}
+.row{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center}
+.btn{--c:var(--b1);font:800 1.15rem/1 inherit;font-family:inherit;color:#fff;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 80%,#fff),var(--c));border:0;border-radius:18px;padding:1.1rem 2rem;min-width:11rem;cursor:pointer;box-shadow:0 6px 0 color-mix(in srgb,var(--c) 55%,#000),0 14px 22px rgba(0,0,0,.25);transition:transform .12s,box-shadow .12s,filter .12s;letter-spacing:.02em}
+.btn:nth-child(2){--c:var(--b2)}.btn:nth-child(3){--c:var(--b3)}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.btn:active{transform:translateY(5px);box-shadow:0 1px 0 color-mix(in srgb,var(--c) 55%,#000),0 4px 8px rgba(0,0,0,.25)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+#out{max-width:min(90vw,520px)}
+#out img{width:100%;height:auto;display:block;animation:pop .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){#out img{animation:none}.btn{transition:none}}
+</style></head><body>
+<div class="row">
+<button class="btn" data-k="yaşayış yeri">Yaşayış yeri</button>
+<button class="btn" data-k="telefon nömrəsi">Telefon nömrəsi</button>
+<button class="btn" data-k="ad">Ad</button>
+</div>
+<div id="out" aria-live="polite"></div>
+<script>
+var IMG="test1.jpeg"
+var out=document.getElementById('out');
+document.querySelectorAll('.btn').forEach(function(b){
+ b.addEventListener('click',function(){
+  out.innerHTML='';var i=new Image();i.src=IMG;i.alt='Yumruq';out.appendChild(i);
+ });
+});
+</script></body></html>
